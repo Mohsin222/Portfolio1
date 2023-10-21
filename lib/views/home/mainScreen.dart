@@ -27,47 +27,44 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return  MainLayout(
-      webWidget: HomeWebScreen(),
-      tabWidget: HomeTabScreen(),
+      webWidget: const HomeWebScreen(),
+      tabWidget: const HomeTabScreen(),
       mobileWidget:  HomeMobScreen(),
       defaultWidget:  HomeMobScreen(),
     );
     
     
-    
-    Scaffold(
-      body: LayoutBuilder(builder: (context, constraints) {
-        if(constraints.maxWidth > 950){
-          return const HomeWebScreen();
-        }
-           else if(constraints.maxWidth > 500){
-                      return const HomeTabScreen();
-           }
-              else  if(constraints.maxWidth < 500){
-                          return  HomeMobScreen();
-              }else{
-                          // return  Container(child:const Text('small mobile'));
-                                       return  HomeMobScreen();
-              }
 
-      },),
-    );
   }
 }
 
 
-class HomeWebScreen extends ConsumerWidget {
+class HomeWebScreen extends ConsumerStatefulWidget {
   
   const HomeWebScreen({super.key});
+
+  @override
+  ConsumerState<HomeWebScreen> createState() => _HomeWebScreenState();
+}
+
+class _HomeWebScreenState extends ConsumerState<HomeWebScreen> {
 update(WidgetRef ref ){
 Future.delayed(Duration(seconds: 1),(){
        ref.watch(deviceTypeProvider.notifier).state =DeviceSizeType.WEB;
          print( ref.read(deviceTypeProvider));
 });
 }
+
+
+@override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+     update(ref);
+  }
   @override
-  Widget build(BuildContext context,WidgetRef ref) {
-  //  update(ref);
+  Widget build(BuildContext context) {
+  // 
     final padding =          AppConstants.webbasePadding;
     return Container(
       color: Colors.white,
@@ -106,13 +103,16 @@ Future.delayed(Duration(seconds: 1),(){
   }
 }
 
-class HomeTabScreen extends ConsumerWidget {
+class HomeTabScreen extends ConsumerStatefulWidget {
   const HomeTabScreen({super.key});
 
+  @override
+  ConsumerState<HomeTabScreen> createState() => _HomeTabScreenState();
+}
 
-
+class _HomeTabScreenState extends ConsumerState<HomeTabScreen> {
 update(WidgetRef ref){
-Future.delayed(Duration(seconds: 1),(){
+Future.delayed(const Duration(seconds: 1),(){
        ref.watch(deviceTypeProvider.notifier).state =DeviceSizeType.TAB;
 
 
@@ -120,8 +120,14 @@ Future.delayed(Duration(seconds: 1),(){
        print( ref.read(deviceTypeProvider));
 });
 }
+@override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+     update(ref);
+  }
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     // update(ref);
           // ref.watch(responsiveClassNotifierController.notifier).setDeviceType(DeviceSizeType.TAB);
         final padding =          AppConstants.tabbasePadding;
@@ -171,26 +177,36 @@ Future.delayed(Duration(seconds: 1),(){
 }
 
 
-class HomeMobScreen extends ConsumerWidget {
+class HomeMobScreen extends ConsumerStatefulWidget {
 
+  @override
+  ConsumerState<HomeMobScreen> createState() => _HomeMobScreenState();
+}
+
+class _HomeMobScreenState extends ConsumerState<HomeMobScreen> {
  String dropdownvalue = 'ABOUT US ';  
- 
+
 update(WidgetRef ref){
-Future.delayed(Duration(seconds: 1),(){
+Future.delayed(const Duration(seconds: 1),(){
        ref.watch(deviceTypeProvider.notifier).state =DeviceSizeType.MOBILE;
          print( ref.read(deviceTypeProvider));
 });
 }
+@override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+     update(ref);
+  }
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    // update(ref);
-          // ref.watch(responsiveClassNotifierController.notifier).setDeviceType(DeviceSizeType.MOBILE);
+  Widget build(BuildContext context) {
+ 
             final padding =          AppConstants.mobilebasePadding;
     return Scaffold(
-      
-      appBar: AppBar(
+      key: drawerGlobalKey,
+      // appBar: AppBar(
 
-      ),
+      // ),
       drawer:const DrawerWidget(),
       body: Container(
         
@@ -201,11 +217,25 @@ Future.delayed(Duration(seconds: 1),(){
         //           padding: padding,
         //           child:const HeaderSection()),
           // First section
+
+       
          Container(
-             decoration: BoxDecoration(image: DecorationImage(image: NetworkImage('https://images.unsplash.com/photo-1605379399642-870262d3d051?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1506'),fit: BoxFit.cover,opacity: 0.9)),
-           child: Padding(
-              padding: padding,
-            child: FirstSection()),
+          height: 1.sh,
+          width: 1.sw,
+             decoration: const BoxDecoration(image: DecorationImage(image: NetworkImage('https://images.unsplash.com/photo-1605379399642-870262d3d051?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1506'),fit: BoxFit.cover,opacity: 0.9)),
+           child: Column(
+             children: [
+                 Container(
+              padding: EdgeInsets.all(20),
+                  alignment: Alignment.centerLeft,
+                  child: IconButton(onPressed: (){
+                    drawerGlobalKey.currentState!.openDrawer();
+                  }, icon: Icon(Icons.menu,color: Colors.white,),)),
+               Padding(
+                  padding: padding,
+                child:const FirstSection()),
+             ],
+           ),
          ),
           // portfolio section
         

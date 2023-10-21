@@ -9,7 +9,7 @@ var dd ={
     {
         "name": "Todo App",
         "image": "./assets/images/portfolio_images/todo_app/todo_app_pic1.png",
-        "description": "This is my  Todo.I created this app with flutter and nodejs i use mongodb database",
+        "description": "This is my  Todo.I created this app with flutter and nodejs i use mongodb database.In this app you see all of your task according to date ",
         "title": "Todo App",
         "category":["web","mobile","graphic"],
         "images":[
@@ -22,7 +22,7 @@ var dd ={
         {
         "name": "Wallpapers App",
         "image": "./assets/images/portfolio_images/wall_app/wall_app_pic1.png",
-        "description": "This is my second product",
+        "description": "This is my Wallpapers app created with flutter. This app provider all kind of wallpapers  its backend was created with Nodejs express js",
         "title": "Wallpapers App",
           "category":["web","mobile","graphic"],
         "images":[
@@ -35,23 +35,23 @@ var dd ={
         {
         "name": "Event App",
         "image": "./assets/images/portfolio_images/event_app/event_app_pic2.png",
-        "description": "This is my third product",
+        "description": "This is Event App ",
         "title": "Event App",
           "category":["web","mobile","graphic"],
         "images":[]
     },
         {
-        "name": "web",
+        "name": "Employee Attendance System",
         "image": "./assets/images/portfolio_images/attendance_system/attendance_system.png",
-        "description": "This is my four product",
+        "description": "This is employee Attendance system in this user mark Attendance when he arrive and mark attendance when he leave.System collect its duration time",
         "title": "Cam",
           "category":["web","mobile","graphic"],
         "images":[]
     },
         {
-        "name": "web",
+        "name": "Resturant App",
         "image": "./assets/images/portfolio_images/resturant_app/resturant_app1.png",
-        "description": "This is my five product",
+        "description": "Resturant app its front end created with flutter.I provide a lot of features to its customers it show all food with accurate price it also show discount on product. The main featurs of this app you should book a table from any place  ",
         "title": "tv",
           "category":["web","mobile","graphic"],
         "images":[]

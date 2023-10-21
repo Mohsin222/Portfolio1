@@ -76,10 +76,11 @@ class ServiceListCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Card(
       elevation: 20.h,
-      color: Colors.grey,
+      // color: Colors.grey,
       child: Container(
+        padding: EdgeInsets.symmetric(vertical: 15.h),
         decoration: BoxDecoration(
-          image: DecorationImage(image: NetworkImage('https://images.unsplash.com/photo-1505238680356-667803448bb6?auto=format&fit=crop&q=80&w=1470&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'),fit: BoxFit.fill,opacity: 0.5)
+          // image: DecorationImage(image: NetworkImage('https://images.unsplash.com/photo-1505238680356-667803448bb6?auto=format&fit=crop&q=80&w=1470&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'),fit: BoxFit.fill,opacity: 0.5)
         ),
 
         // color: Colors.red,
@@ -89,7 +90,8 @@ class ServiceListCard extends StatelessWidget {
           children: [
             Expanded(
               // child: Icon(Icons.house_outlined,size: 40.sp,)
-              child: FlutterLogo(size: 40.sp,),
+              // child: FlutterLogo(size: 40.sp,),
+              child: Image.network(servicesModelClass.image ??'https://images.unsplash.com/photo-1505238680356-667803448bb6?auto=format&fit=crop&q=80&w=1470&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'),
               
               ),
             Expanded(
@@ -107,8 +109,8 @@ class ServiceListCard extends StatelessWidget {
                                     textStyle:  TextStyle(
                                   fontSize: 20.sp,
                                
-                                  // color: Colors.black,
-                                       color: Colors.white,
+                                  color: Colors.black,
+                                      //  color: Colors.white,
                                   fontWeight: FontWeight.w600,
                                   fontFamily: 'sans-serif'
                                 ),
@@ -131,8 +133,8 @@ class ServiceListCard extends StatelessWidget {
                                                  textStyle: TextStyle(fontSize: 16.sp,
                                                fontWeight: FontWeight.w400,
                                               //  overflow: TextOverflow.ellipsis,
-                                              //  color: Colors.black54,
-                                              color: Colors.white,
+                                               color: Colors.black54,
+                                              // color: Colors.white,
                                                 fontFamily: 'sans-serif'
                                                ),
                                                ),

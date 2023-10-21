@@ -27,7 +27,7 @@ class AboutUsSecondSection extends StatelessWidget {
         children: [
                     Align(
                       alignment: MediaQuery.of(context).size.width >500 ?Alignment.centerLeft:Alignment.center,
-                      child: Text('MOHSIN IRFAN',
+                      child: Text('Who I am',
                           style: HeadingStyles.mainHeadingStyle
                                                     ),
                     ),
@@ -70,7 +70,7 @@ _forWeb(){
                     children: [
                             
                       SizedBox(height: 10.h,),
-                      Text('I create web apps  android apps',
+                      Text('Hello I am Mohsin Irfan',
                       style: TextStyle(
                         fontSize: 18.sp,
                           
@@ -78,7 +78,9 @@ _forWeb(){
                       ),
                       ),
                           SizedBox(height: 10.h,),
-                          Text('I was born in pakistan in 1999.I\'m creative web and application developer, specializing in User Interface Design and full stack Development.',
+                          // Text('I was born in pakistan in 1999.I\'m creative web and application developer, specializing in User Interface Design and full stack Development.',
+                        
+                        Text('I am a Software engineer experience in creating full stack application from stratch',
                           style: GoogleFonts.lato(
                             textStyle: TextStyle(
                             color: Color(0xff818385),

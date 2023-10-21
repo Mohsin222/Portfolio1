@@ -85,6 +85,8 @@ class SkillsSection extends StatelessWidget {
                      SizedBox(height: 10.h,),
              const         ProgressBarWidget(title: 'MySql',percent: 60),
                      SizedBox(height: 10.h,),
+                               const         ProgressBarWidget(title: 'Express js',percent: 90),
+                     SizedBox(height: 10.h,),
           ],
         )
           ],

@@ -44,8 +44,14 @@ await launchUrl(_url);
   @override
   Widget build(BuildContext context) {
     return    Container(
+         decoration: BoxDecoration(
+           color: Colors.black,
+       
+       
+          // image: DecorationImage(image: NetworkImage('https://images.unsplash.com/photo-1605379399642-870262d3d051?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1506'),fit: BoxFit.cover,opacity: 0.9),
+          ),
         width:1.sw,
-        color: Colors.black,
+       
         padding: EdgeInsets.symmetric(vertical: 60.h,horizontal: 20.w),
         child: Flex(
           direction: MediaQuery.of(context).size.width > 750 ? Axis.horizontal :Axis.vertical,

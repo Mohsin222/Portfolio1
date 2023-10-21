@@ -12,6 +12,9 @@ class FirstSection extends ConsumerWidget {
   @override
   Widget build(BuildContext context,WidgetRef ref) {
       // print(ref.watch(deviceTypeProvider));
+var deviceTypeProviderController= ref.watch(deviceTypeProvider);
+
+
     return  Container(
           padding: EdgeInsets.symmetric(vertical: 120.h, ),
           width: 1.sw,
@@ -50,11 +53,13 @@ class FirstSection extends ConsumerWidget {
                         )
                       ]),
                 ),
+
+                deviceTypeProviderController != DeviceSizeType.TAB ?
                 SizedBox(
                   height: 30.h,
-                ),
+                ):SizedBox(),
                 Text(
-                  'I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and\nI will give you a complete account of the system',
+                  'A programming language is a tool that has a profound influence on our thinking habits',
                   // style: TextStyle(color: Color(0xff818385)),
                     style: TextStyle(color: Colors.white),
                   // textAlign: MediaQuery.of(context).size.width >500 ? TextAlign.left :TextAlign.center,

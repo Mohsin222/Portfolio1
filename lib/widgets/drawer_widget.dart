@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
+final GlobalKey<ScaffoldState> drawerGlobalKey = GlobalKey(); // Cr
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({
     super.key,

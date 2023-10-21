@@ -7,6 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:portfolio1/controller/portfolio_controller.dart';
+import 'package:portfolio1/controller/resoponsvice_controller.dart';
 import 'package:portfolio1/models/new_mdl.dart';
 import 'package:portfolio1/utils/heading_style.dart';
 
@@ -50,7 +51,7 @@ class _PortfolioSectionState extends ConsumerState<PortfolioSection> {
   Widget build(BuildContext context) {
         final prov = ref.watch(portFolioListModel);
 
-
+     final deviceTypeProv = ref.watch(deviceTypeProvider);
 
 
     final filterPortFolioList =Filter.filterList(list: prov,ref: ref);
@@ -59,52 +60,20 @@ class _PortfolioSectionState extends ConsumerState<PortfolioSection> {
           padding: EdgeInsets.only(bottom: 50.h,top: 50.h),
           child: Column(
             children: [
-               // old category button
-        // Row(
-        //           children: [
-        //             Padding(
-        //               padding: EdgeInsets.symmetric(
-        //                   vertical: 15.h, horizontal: 5.w),
-        //               child:
-        //                   TextButton(onPressed: () {
-        //             ref.watch(portCategoryValueForProtFolioScreen.notifier).state ='All';
-        //                   }, child:const Text('All',   style: TextStyle(color: Colors.black),)),
-        //             ),
-        //             Padding(
-        //               padding: EdgeInsets.symmetric(
-        //                   vertical: 15.h, horizontal: 5.w),
-        //               child:
-        //                   TextButton(onPressed: () {
-        //                   ref.watch(portCategoryValueForProtFolioScreen.notifier).state ='camera';
-        //                   }, child:const Text('Camera',
-        //                   style: TextStyle(color: Colors.black),
-        //                   )),
-        //             ),
-        //             Padding(
-        //               padding: EdgeInsets.symmetric(
-        //                   vertical: 15.h, horizontal: 5.w),
-        //               child:
-        //                   TextButton(onPressed: () {
-        //                ref.watch(portCategoryValueForProtFolioScreen.notifier).state ='web';
-        //                   }, child:const Text('Web',   style: TextStyle(color: Colors.black),)),
-        //             ),
-        //           ],
-        //         ),  
-
-        // old category button xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+   
               Align(
-        alignment: MediaQuery.of(context).size.width <400 ? Alignment.center :Alignment.centerLeft ,
+        alignment: deviceTypeProv ==DeviceSizeType.MOBILE ? Alignment.center :Alignment.centerLeft,
         child: Text('PORTFOLIO',
              style: HeadingStyles.mainHeadingStyle,
-                textAlign: MediaQuery.of(context).size.width <400 ? TextAlign.center :TextAlign.left,
+                textAlign:deviceTypeProv ==DeviceSizeType.MOBILE ? TextAlign.center :TextAlign.left,
         ),
       ),
                 SizedBox(height: 50.h,),
        
             SizedBox(
             // height:MediaQuery.of(context).size.width > 950  ?    280.h *2.2 : MediaQuery.of(context).size.width > 400 ?280.h*3.5:    280.h*6.5,
-                     height:MediaQuery.of(context).size.width > 950  ?    350.h *2.2 : MediaQuery.of(context).size.width > 500 ?350.h*3.5:    350.h*6.5,
- 
+                    //  height:MediaQuery.of(context).size.width > 950  ?    350.h *2.2 : MediaQuery.of(context).size.width > 500 ?350.h*3.5:    350.h*6.5,
+ height:deviceTypeProv ==DeviceSizeType.WEB ? 350.h *2.2 :deviceTypeProv ==DeviceSizeType.TAB ?350.h*3.5:350.h*3.5,
         // height:MediaQuery.of(context).size.width > 950  ?    280.h *2.2 : (MediaQuery.of(context).size.width > 500) ?280.h*3.5: (MediaQuery.of(context).size.width < 500 && filterPortFolioList!.length < 4)   ? 280*3:    280.h*6.5,  
               child: GridView.builder(
                     physics:const NeverScrollableScrollPhysics(),
@@ -200,31 +169,34 @@ class _PortfolioCardState extends State<PortfolioCard>     with SingleTickerProv
                     filter: ImageFilter.blur(sigmaX :6, sigmaY:6),
                     child: Padding(
                       padding: const EdgeInsets.all(32.0),
-                      child: Column(
-                        crossAxisAlignment:  CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(height: 50.h,),
-                          SelectableText('Isfahan',
-                          style: Theme.of(context).textTheme.titleLarge!.copyWith(color: Colors.white)
-                          ),
-                                        SizedBox(height: 25.h,),
-                                   SelectableText('Isfahan Restarted application Restarted application' ,
-                                         style: Theme.of(context).textTheme.titleSmall!.copyWith(color: Colors.white)
-                                   ),
-                                            SelectableText('Isfahan',
-                                                  style: Theme.of(context).textTheme.titleMedium!.copyWith(color: Colors.white)
-                                            ),
-                    
-                                                 ElevatedButton(
-                                                   child: FittedBox(
-                                                     child: const Text(
-                                                       "Discover the Jewel of Iran",
-                                                     ),
-                                                   ),
-                                                   onPressed: () {},
-                                                 )
-                          
-                        ],
+                      child: SizedBox(
+                        width: 1.sw, 
+                        child: Column(
+                          crossAxisAlignment:  CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(height: 50.h,),
+                            SelectableText(widget.portfolioDataModel!.title ?? '',
+                            style: Theme.of(context).textTheme.titleLarge!.copyWith(color: Colors.white)
+                            ),
+                                          SizedBox(height: 25.h,),
+                                     SelectableText( widget.portfolioDataModel!.description ??'',
+                                           style: Theme.of(context).textTheme.titleSmall!.copyWith(color: Colors.white)
+                                     ),
+                                              // SelectableText('Isfahan',
+                                              //       style: Theme.of(context).textTheme.titleMedium!.copyWith(color: Colors.white)
+                                              // ),
+                                          
+                                              //      ElevatedButton(
+                                              //        child: FittedBox(
+                                              //          child: const Text(
+                                              //            "Discover the Jewel of Iran",
+                                              //          ),
+                                              //        ),
+                                              //        onPressed: () {},
+                                              //      )
+                            
+                          ],
+                        ),
                       ),
                     ),
                   ),
